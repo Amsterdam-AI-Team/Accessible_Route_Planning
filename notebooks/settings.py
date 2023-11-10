@@ -17,3 +17,11 @@ min_area_size = 1
 
 # Maximum length of linestring (in meters), otherwise cut
 max_ls_length = 2
+
+# Select which layers of BGT data to include
+# (https://www.amsterdam.nl/stelselpedia/bgt-index/producten-bgt/prodspec-bgt-dgn-imgeo)
+bgt_layers = ['BGT_WGL_voetpad', 'BGT_WGL_voetgangersgebied', 'BGT_WGL_inrit', 'BGT_WGL_woonerf']  # note: 'BGT_WGL_voetpad_op_trap' not included
+
+# Select location for BGT data
+bbox = None  # Get all data, entire Amsterdam
+#bbox = ((122000, 485550), (122300, 485250))
