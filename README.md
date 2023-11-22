@@ -47,8 +47,11 @@ The code has been tested with Python x.x on Linux/MacOS/Windows.
 0. Run get_pilot_area.ipynb to the polygon(s) of the area(s) to work with
 1. Run create_basic_network.ipynb to create the basic pedestrian network
 2. Run get_sidewalk_widths_on_network.ipynb to add obstacle-free widths to the basic network
+   
+optional for now:
 3a. Run xxxxx to get curb heights, curb ramps, crossings and crosswalks from OSM, Project Sidewalk, point clouds and traffic signs
 3b. Run xxxxx to add all crossings to network
+
 4. Run create_baseline_model.ipynb to get a bench mark for accessible route planning on your network
    
 
