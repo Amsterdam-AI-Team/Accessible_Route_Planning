@@ -21,3 +21,6 @@ segments_file = f'{in_folder}output/sidewalk_segments.gpkg'
 
 # Basic pedestrian network with widths
 output_file_widths = f'{out_folder}basic_pedestrian_network_widths.gpkg'
+
+# Output path for a map of the basic network with widths
+network_map_widths = f'{out_folder}basic_pedestrian_network_map_widths.html'
