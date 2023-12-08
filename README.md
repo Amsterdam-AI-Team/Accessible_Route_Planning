@@ -51,7 +51,9 @@ The code has been tested with Python x.x on Linux/MacOS/Windows.
 optional for now:
 
 3a. Run xxxxx to get curb heights, curb ramps, crossings and crosswalks from OSM, Project Sidewalk, point clouds and traffic signs
+
 3b. Run xxxxx to add all crossings to network
+
 4. Run create_bike_network.ipynb to create a bike network based on BGT and OSM
 
 5. Run create_baseline_model.ipynb to get a benchmark for accessible route planning on your network
