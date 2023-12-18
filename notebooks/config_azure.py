@@ -33,3 +33,21 @@ output_file_widths = f'{out_folder}basic_pedestrian_network_widths.gpkg'
 
 # Output path for a map of the basic network with widths
 network_map_widths = f'{out_folder}basic_pedestrian_network_map_widths.html'
+
+# Basic pedestrian network including crossings
+output_basic_network_including_crossings = f'{out_folder}basic_pedestrian_network_widths_including_crossings.gpkg'
+
+# Crossings from project sidewalk
+output_project_sidewalk_crossings = f'{out_folder}project_sidewalk_crossings.gpkg'
+
+# Crossings from OSM
+output_osm_crossings = f'{out_folder}osm_crossings.gpkg'
+
+# Crossings from traffic signs
+output_traffic_sign_crossings = f'{out_folder}traffic_sign_crossings.gpkg'
+
+# Crossings from curb height
+output_curb_crossings_base = f'{out_folder}curb_crossings'
+
+# Road network
+output_road_network = f'{out_folder}road_network.gpkg'
