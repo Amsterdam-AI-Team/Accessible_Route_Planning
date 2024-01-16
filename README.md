@@ -57,7 +57,7 @@ The code has been tested with Python x.x on Linux/MacOS/Windows.
    1. Run ground_and_road_fusion.ipynb to obtain ground/road labeled point clouds
    2. Run get_curb_heights.ipynb to obtain curb height features
    3. Run generate_curb_ramp_crossings.ipynb to generate crossings from curb height features
-6. Run merge_walking_network_and_crossings.ipynb to add generated crossings to walking network
+6. Run merge_network_and_crossings.ipynb to add generated crossings to walking network
 
 optional for now:
 
