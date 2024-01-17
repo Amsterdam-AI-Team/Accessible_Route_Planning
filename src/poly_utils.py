@@ -158,30 +158,56 @@ def get_avg_width_cl(poly, segments, resolution=1, precision=2):
     return pd.Series([np.round(avg_width, precision), np.round(min_width, precision)])
 
 
-def get_route_color(route_weight):
+# def get_route_color(route_weight):
+#     if route_weight == 0:
+#         final_color = 'black'
+#     elif (route_weight > 0) & (route_weight < 100):
+#         final_color = 'green'
+#     elif (route_weight >= 100) & (route_weight < 10000):
+#         final_color = 'limegreen'
+#     elif (route_weight >= 10000) & (route_weight < 1000000):
+#         final_color = 'greenyellow'
+#     elif (route_weight >= 1000000) & (route_weight < 100000000):
+#         final_color = 'yellow'
+#     elif (route_weight >= 100000000) & (route_weight < 10000000000):
+#         final_color = 'orange'
+#     elif (route_weight >= 10000000000) & (route_weight < 1000000000000):
+#         final_color = 'red'
+#     elif (route_weight >= 1000000000000) & (route_weight < 100000000000000):
+#         final_color = 'darkred'
+#     elif route_weight == 100000000000000:
+#         final_color = 'brown'
+#     elif route_weight > 100000000000000:
+#         final_color = 'grey'
+#     else:
+#         final_color = 'purple'
+#     return final_color
+
+
+def get_route_width(route_weight):
     if route_weight == 0:
-        final_color = 'black'
+        route_width = np.nan
     elif (route_weight > 0) & (route_weight < 100):
-        final_color = 'green'
+        route_width = st.width_6
     elif (route_weight >= 100) & (route_weight < 10000):
-        final_color = 'limegreen'
+        route_width = st.width_5
     elif (route_weight >= 10000) & (route_weight < 1000000):
-        final_color = 'greenyellow'
+        route_width = st.width_4
     elif (route_weight >= 1000000) & (route_weight < 100000000):
-        final_color = 'yellow'
+        route_width = st.width_3
     elif (route_weight >= 100000000) & (route_weight < 10000000000):
-        final_color = 'orange'
+        route_width = st.width_2
     elif (route_weight >= 10000000000) & (route_weight < 1000000000000):
-        final_color = 'red'
+        route_width = st.width_1
     elif (route_weight >= 1000000000000) & (route_weight < 100000000000000):
-        final_color = 'darkred'
+        route_width = st.min_path_width
     elif route_weight == 100000000000000:
-        final_color = 'brown'
+        route_width = 0
     elif route_weight > 100000000000000:
-        final_color = 'grey'
+        route_width = np.nan
     else:
-        final_color = 'purple'
-    return final_color
+        route_width = np.nan
+    return route_width
 
 
 def create_df_centerlines(centerline):
