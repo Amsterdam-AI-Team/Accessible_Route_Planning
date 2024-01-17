@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import geopandas as gpd
 from geopandas import GeoDataFrame
+from shapely.geometry import Polygon
 
 #from upcp.utils import las_utils
 
@@ -272,3 +273,6 @@ def create_mls_per_sidewalk(df, crs):
         mls_list.append(mls_id)
         
     return(GeoDataFrame(geometry=mls_list, crs=crs)) 
+
+def bbox_to_polygon(bbox):
+    return Polygon([bbox[0],(bbox[0][0],bbox[1][1]), bbox[1],(bbox[1][0],bbox[0][1])])
