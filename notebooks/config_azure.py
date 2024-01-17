@@ -37,17 +37,48 @@ network_map_widths = f'{out_folder}basic_pedestrian_network_map_widths.html'
 # Basic pedestrian network including crossings
 output_basic_network_including_crossings = f'{out_folder}basic_pedestrian_network_widths_including_crossings.gpkg'
 
+# Crossing features from project sidewalk
+output_project_sidewalk_crossing_features = f'{out_folder}crossing_features/project_sidewalk/crossing_features_project_sidewalk.csv'
+
 # Crossings from project sidewalk
 output_project_sidewalk_crossings = f'{out_folder}project_sidewalk_crossings.gpkg'
+
+# Crossing features from OSM
+output_osm_crossing_features = f'{out_folder}crossing_features/OpenStreetMap/crossing_features_osm.csv'
 
 # Crossings from OSM
 output_osm_crossings = f'{out_folder}osm_crossings.gpkg'
 
+# Crossing features from traffic signs
+output_traffic_sign_crossing_features = f'{out_folder}crossing_features/traffic_sign/crossing_features_traffic_sign.csv'
+
 # Crossings from traffic signs
 output_traffic_sign_crossings = f'{out_folder}traffic_sign_crossings.gpkg'
+
+# Curb heights 
+output_curb_heigts = f'{out_folder}curb_heights/curbs_and_heights.csv'
 
 # Crossings from curb height
 output_curb_crossings_base = f'{out_folder}curb_crossings'
 
 # Road network
 output_road_network = f'{out_folder}road_network.gpkg'
+
+
+
+# Folders in ovl container
+
+# Main folder
+base_folder_ovl = '/home/azureuser/cloudfiles/code/blobfuse/ovl/'
+
+# Ahn folder
+ahn_folder = f'{base_folder_ovl}ahn/Amsterdam/ahn4_npz/'
+
+# BGT folder
+bgt_folder = f'{base_folder_ovl}bgt/bgt_roads/'
+
+# Folder with unlabeled input point clouds
+in_folder_point_clouds = f'{base_folder_ovl}pointcloud/Unlabeled/Amsterdam/'
+
+# Folder with ground and road labeled output point clouds
+out_folder_point_clouds = f'{base_folder_ovl}pointcloud/Labeled/ground_and_road/'
