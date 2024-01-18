@@ -1,0 +1,10 @@
+centerline==0.6.3
+geopandas
+numpy
+pandas
+Shapely==1.8.0
+#tqdm==4.64.0
+momepy==0.5.3
+matplotlib
+contextily
+folium
