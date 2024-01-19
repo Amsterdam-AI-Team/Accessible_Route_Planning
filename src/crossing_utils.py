@@ -145,3 +145,41 @@ def connect_curb_crossing_edge(gdf_source_nodes, gdf_target_nodes, walking_graph
             return gdf_edges
         else:
             return gpd.GeoDataFrame()
+
+
+# # Function to find closest target nodes from source nodes and subsequently create edge between tese nodes.
+# # Edge is a connection between a source and a target node.
+# # max_dist: maximmum distance between source and target node is max_dist.
+# # max_connections: maximum number of new edges from source node.
+# # include_cc_rule: Restricts nodes to be connected to the same walking network component multiple times
+def get_connections(gdf_source_nodes, gdf_target_nodes, max_dist=20, max_connections=3, cc_column=None, include_cc_rule=False):
+
+    # Get distance matrices
+    dist_matrix = cdist(gdf_source_nodes[['x', 'y']].values, gdf_target_nodes[['x', 'y']].values, metric='euclidean')
+    np.fill_diagonal(dist_matrix, 10**6)
+    dist_sort = np.sort(dist_matrix, axis=1)
+    dist_argsort = np.argsort(dist_matrix, axis=1)
+
+    # Calculate new edges
+    idxs = np.where(dist_sort < max_dist, True, False)
+    nodes_to_connect = [list(row[row_idxs]) for row, row_idxs in zip(dist_argsort, idxs)]
+
+    if include_cc_rule:
+        edges, edges_geometries = [], []
+        for source_node in tqdm(range(len(dist_sort))):
+            restricted_cc, connections_count = [], 0
+
+            for target_node in nodes_to_connect[source_node]:
+                target_cc = gdf_target_nodes.iloc[target_node][cc_column]
+                if target_cc not in restricted_cc and connections_count < max_connections:
+                    edges.append([source_node, target_node])
+                    edge = sg.LineString([gdf_source_nodes.iloc[source_node]['geometry'], gdf_target_nodes.iloc[target_node]['geometry']])
+                    edges_geometries.append(edge)
+                    restricted_cc.append(target_cc)
+                    connections_count += 1
+
+    else:
+        edges = [[i, nodes_to_connect[i][j]] for i in range(len(dist_sort)) for j in range(len(nodes_to_connect[i])) if j < max_connections]
+        edges_geometries = [sg.LineString([gdf_source_nodes.iloc[edge[0]]['geometry'], gdf_target_nodes.iloc[edge[1]]['geometry']]) for edge in edges]
+    
+    return edges, edges_geometries
