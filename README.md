@@ -44,10 +44,12 @@ The code has been tested with Python x.x on Linux/MacOS/Windows.
 
 
 
-0. Run get_pilot_area.ipynb to the polygon(s) of the area(s) to work with
-1. Run create_basic_network.ipynb to create the basic pedestrian network
-2. Run get_sidewalk_widths_on_network.ipynb to add obstacle-free widths to the basic network
-3. Run create_road_network.ipynb to create road network which is used to obtain crossings
+1. Run get_pilot_area.ipynb to the polygon(s) of the area(s) to work with
+2. 
+   1. Run create_basic_network.ipynb to create the basic pedestrian network
+   2. Run create_bike_network.ipynb to create a bike network based on BGT and OSM
+   3. Run create_road_network.ipynb to create road network which is used to obtain crossings
+3. Run get_sidewalk_widths_on_network.ipynb to add obstacle-free widths to the basic network
 4.
    1. Run get_osm_crossing_features.ipynb to obtain OpenStreetMap crossing features
    2. Run get_project_sidewalk_crossing_features.ipynb to obtain Project Sidewalk crossing features
@@ -57,11 +59,11 @@ The code has been tested with Python x.x on Linux/MacOS/Windows.
    1. Run ground_and_road_fusion.ipynb to obtain ground/road labeled point clouds
    2. Run get_curb_heights.ipynb to obtain curb height features
    3. Run generate_curb_ramp_crossings.ipynb to generate crossings from curb height features
-6. Run merge_network_and_crossings.ipynb to add generated crossings to walking network
+6. Run get_walking_and_bike_network_connections.ipynb to obtain connections between walking and bike network
+7. Run merge_network_and_crossings.ipynb to add generated crossings to walking and bike network network
 
 optional for now:
 
-7. Run create_bike_network.ipynb to create a bike network based on BGT and OSM
 8. Run create_baseline_model.ipynb to get a benchmark for accessible route planning on your network
    
 
