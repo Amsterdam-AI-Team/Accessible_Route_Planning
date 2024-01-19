@@ -19,6 +19,9 @@ basic_network_map = f'{out_folder}basic_pedestrian_network_map.html'
 # Bike network
 output_bike_network = f'{out_folder}bike_network.gpkg'
 
+# Bike network cut up
+output_bike_network_cut = f'{out_folder}bike_network_cut.gpkg'
+
 # Path polygons related to bike network
 output_bikepaths_bike_network = f'{out_folder}paths_bike_network.gpkg'
 
@@ -30,9 +33,6 @@ segments_file = f'{in_folder}output/sidewalk_segments.gpkg'
 
 # Basic pedestrian network with widths
 output_file_widths = f'{out_folder}basic_pedestrian_network_widths.gpkg'
-
-# Basic pedestrian network with widths and crossings
-output_file_crossings = f'{out_folder}basic_pedestrian_network_widths_including_crossings.gpkg'
 
 # Output path for a map of the basic network with widths
 network_map_widths = f'{out_folder}basic_pedestrian_network_map_widths.html'
@@ -63,6 +63,9 @@ output_curb_heigts = f'{out_folder}curb_heights/curbs_and_heights.csv'
 
 # Crossings from curb height
 output_curb_crossings_base = f'{out_folder}curb_crossings'
+
+# Connections walking network and cycling network
+output_walk_bike_connections_base = f'{out_folder}walk_bike_network_connections'
 
 # Road network
 output_road_network = f'{out_folder}road_network.gpkg'
