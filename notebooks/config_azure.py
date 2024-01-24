@@ -67,6 +67,15 @@ output_curb_heigts = f'{out_folder}curb_heights/curbs_and_heights.csv'
 # Crossings from curb height
 output_curb_crossings_base = f'{out_folder}curb_crossings'
 
+# XML source file for public transport (bus, tram and ferry) stops
+ndov_public_transport_stops = f'{out_folder}ExportCHB20240122013051.xml'
+
+# Features for public transport stops
+output_public_transport_features = f'{out_folder}public_transport_features.gpkg'
+
+# Connections walking network and public transport stops
+output_walk_public_transport_stop_connections = f'{out_folder}walk_public_transport_stop_connections.gpkg'
+
 # Connections walking network and cycling network
 output_walk_bike_connections_base = f'{out_folder}walk_bike_network_connections'
 
