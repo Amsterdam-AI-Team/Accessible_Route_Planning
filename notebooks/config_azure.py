@@ -37,6 +37,9 @@ output_file_widths = f'{out_folder}basic_pedestrian_network_widths.gpkg'
 # Output path for a map of the basic network with widths
 network_map_widths = f'{out_folder}basic_pedestrian_network_map_widths.html'
 
+# Output path for final network
+network_map_final = f'{out_folder}network_map_final.html'
+
 # Basic pedestrian network including crossings
 output_basic_network_including_crossings = f'{out_folder}basic_pedestrian_network_widths_including_crossings.gpkg'
 

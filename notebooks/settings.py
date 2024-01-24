@@ -40,12 +40,12 @@ width_precision = 1
 min_path_width = 0.4
 
 # Boundaries between the final colors (in meters)
-width_1 = 0.9
-width_2 = 1.5
-width_3 = 2.0
-width_4 = 2.2
-width_5 = 2.9
-width_6 = 3.6
+width_1 = 0.6
+width_2 = 0.8
+width_3 = 1.0
+width_4 = 1.2
+width_5 = 1.4
+width_6 = 1.6
 
 # Maximum distance between intended start point and start node (in meters)
 max_dist = 3
