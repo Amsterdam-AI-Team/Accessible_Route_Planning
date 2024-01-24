@@ -6,6 +6,7 @@ import pandas as pd
 import geopandas as gpd
 from geopandas import GeoDataFrame
 from shapely.geometry import Polygon
+from scipy.spatial import cKDTree
 
 #from upcp.utils import las_utils
 
@@ -302,3 +303,20 @@ def create_mls_per_sidewalk(df, crs):
 
 def bbox_to_polygon(bbox):
     return Polygon([bbox[0],(bbox[0][0],bbox[1][1]), bbox[1],(bbox[1][0],bbox[0][1])])
+
+
+# Function to replace column values in gdf1 with column values in gdf2 for closest rows across gdf1 and gdf2.
+def infer_column_by_distance(gdf1, gdf2, column_name):
+    # Create a spatial index for each GeoDataFrame
+    spatial_index_gdf1 = cKDTree(gdf1.geometry.apply(lambda geom: (geom.x, geom.y)).tolist())
+    spatial_index_gdf2 = cKDTree(gdf2.geometry.apply(lambda geom: (geom.x, geom.y)).tolist())
+
+    # Find the closest point in gdf2 for each point in gdf1
+    _, indices_gdf2 = spatial_index_gdf2.query(gdf1.geometry.apply(lambda geom: (geom.x, geom.y)).tolist())
+
+    # Create a new GeoDataFrame with the closest points from gdf2
+    closest_rows_gdf2 = gdf2.iloc[indices_gdf2].reset_index(drop=True)
+
+    # Add a new column to gdf1 with the corresponding closest point from gdf2
+    gdf1[column_name] = closest_rows_gdf2[column_name].to_list()
+    return gdf1
