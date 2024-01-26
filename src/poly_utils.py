@@ -320,3 +320,9 @@ def infer_column_by_distance(gdf1, gdf2, column_name):
     # Add a new column to gdf1 with the corresponding closest point from gdf2
     gdf1[column_name] = closest_rows_gdf2[column_name].to_list()
     return gdf1
+
+# Function to obtain euclidian distance between node a and b
+def dist(a, b):
+    (x1, y1) = a
+    (x2, y2) = b
+    return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
