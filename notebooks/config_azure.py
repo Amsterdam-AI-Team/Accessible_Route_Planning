@@ -82,6 +82,8 @@ output_walk_bike_connections_base = f'{out_folder}walk_bike_network_connections'
 # Road network
 output_road_network = f'{out_folder}road_network.gpkg'
 
+# Final network
+output_final_network = f'{out_folder}final_network.gpkg'
 
 
 # Folders in ovl container
