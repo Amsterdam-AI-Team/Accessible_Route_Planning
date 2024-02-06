@@ -52,3 +52,9 @@ max_dist = 3
 
 # Minimum length for short-ends (in meters), otherwise removed (in full width calculation)
 min_se_length_fw = 10
+
+# Weight for crossing edges in the network
+crossing_weight_factor = 1.4
+
+# Weight for walk and bike edges in network
+walk_bike_preference_weight_factor = 0.6
