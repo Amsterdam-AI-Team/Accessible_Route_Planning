@@ -2,6 +2,7 @@
 
 # Select coordinate reference system
 CRS = 'epsg:28992'
+CRS_map = 'epsg:4326'
 
 # Select area granularity (buurten/wijken/ggwgebieden/stadsdelen)
 area_choice = 'wijken'
