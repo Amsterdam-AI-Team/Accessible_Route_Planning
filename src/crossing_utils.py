@@ -101,7 +101,7 @@ def get_crossing_edges_from_curb_heights(gdf_source_nodes, gdf_target_nodes, gdf
 
     print('Removing edges that do not cross the street or bikepath...')
     edges_geometries = [edges_dict[source_cc][target_node].get('edge') for source_cc in edges_dict.keys() for target_node in edges_dict[source_cc].keys()]
-    edges_geometries_final = [edge for edge in edges_geometries if gdf_roads.intersects(edge).nunique() > 1]
+    edges_geometries_final = [edge for edge in edges_geometries if np.sum(gdf_roads.intersects(edge)) > 0]
     print('Removed edges that do not cross the street or bikepath.')
 
     gdf_edges = gpd.GeoDataFrame(geometry=edges_geometries_final, crs=crs)
