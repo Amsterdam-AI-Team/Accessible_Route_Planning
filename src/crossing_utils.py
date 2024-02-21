@@ -51,7 +51,7 @@ def get_crossing_edges(gdf_source_nodes, gdf_target_nodes, max_dist=20, max_conn
 # Edge is a connection between a source and a target node.
 # max_dist: maximmum distance between source and target node is max_dist.
 # max_connections: maximum number of new edges from source node.
-def get_crossing_edges_from_curb_heights(gdf_source_nodes, gdf_target_nodes, gdf_roads, min_dist=10, max_dist=20, max_connections=3, cc_column='cc_from_sidewalk_edges', crs='EPSG:28992'):
+def get_crossing_edges_from_curb_heights(gdf_source_nodes, gdf_target_nodes, min_dist=10, max_dist=20, max_connections=3, cc_column='cc_from_sidewalk_edges', crs='EPSG:28992'):
 
     # Get distance matrices
     print('Determining target nodes within distance {}m-{}m from source node...'.format(min_dist, max_dist))
@@ -99,12 +99,8 @@ def get_crossing_edges_from_curb_heights(gdf_source_nodes, gdf_target_nodes, gdf
 
     print('Determined possible edges from source nodes to target nodes.')
 
-    print('Removing edges that do not cross the street or bikepath...')
     edges_geometries = [edges_dict[source_cc][target_node].get('edge') for source_cc in edges_dict.keys() for target_node in edges_dict[source_cc].keys()]
-    edges_geometries_final = [edge for edge in edges_geometries if np.sum(gdf_roads.intersects(edge)) > 0]
-    print('Removed edges that do not cross the street or bikepath.')
-
-    gdf_edges = gpd.GeoDataFrame(geometry=edges_geometries_final, crs=crs)
+    gdf_edges = gpd.GeoDataFrame(geometry=edges_geometries, crs=crs)
     return gdf_edges
 
 
@@ -183,3 +179,21 @@ def get_connections(gdf_source_nodes, gdf_target_nodes, max_dist=20, max_connect
         edges_geometries = [sg.LineString([gdf_source_nodes.iloc[edge[0]]['geometry'], gdf_target_nodes.iloc[edge[1]]['geometry']]) for edge in edges]
     
     return edges, edges_geometries
+
+
+# Function to obtain total number of intersections between line and lines in geodataframe
+def count_total_intersections_with_gdf(line, gdf, geom_column='geometry'):
+    count = 0
+
+    for other_line in gdf[geom_column]:
+        intersections = line.intersection(other_line)
+        
+        if intersections.is_empty:
+            continue
+
+        if intersections.geom_type == 'Point':
+            count += 1
+        elif intersections.geom_type == 'MultiPoint':
+            count += len(intersections)
+
+    return count
