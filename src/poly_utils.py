@@ -35,10 +35,10 @@ def extract_interior(poly):
         return poly, sg.MultiPolygon()
 
 
-def get_centerlines(polygon):
+def get_centerlines(polygon, interpolation_distance=0.5):
     ''' Save a NaN value when centerline calculation fails. '''
     try:
-        x = Centerline(polygon)
+        x = Centerline(polygon, interpolation_distance=interpolation_distance)
     except Exception as e:
         print(e)  # TODO also print rows.name[0] ??
         x = np.nan
