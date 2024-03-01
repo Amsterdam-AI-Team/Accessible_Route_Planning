@@ -82,7 +82,7 @@ pip install -r requirements_route_planning.txt
 
 ## Usage
 
-We provide [notebooks](notebooks) that altogether make up the pipeline to generate the accessible network and plan routes. The notebooks should be run in a specific order, which can be found in the [notebooks](notebooks) README.   
+We provide [notebooks](notebooks) that altogether make up the pipeline to generate the accessible network and plan routes. The notebooks should be run in a specific order, which can be found in the [notebooks README](./notebooks/README.md).   
 
 ## Contributing
 
