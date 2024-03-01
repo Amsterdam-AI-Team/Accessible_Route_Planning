@@ -5,6 +5,9 @@ This repository contains a pipeline for **accessible route planning**. More spec
 * **Maximum curb height**
 * **Preference for walking or cycling**
 
+Demonstration data has been included to run the pipeline. 
+
+
 The methods can serve as inspiration, or can be applied as-is under some specific assumptions:
 1. Usage in The Netherlands;
 2. Point clouds in LAS format and tiled following [specific rules](datasets); and
