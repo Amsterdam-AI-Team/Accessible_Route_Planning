@@ -73,7 +73,7 @@ pip install wrapper/cccorelib
 pip install wrapper/pycc
 ```
 
-3) Create route_planning environment and install dependencies:
+3) Create route planning environment and install dependencies:
     
 ```bash
 pip install -r requirements_route_planning.txt
