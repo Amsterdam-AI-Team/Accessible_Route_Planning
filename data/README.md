@@ -14,10 +14,8 @@ We supply a couple of point clouds for demonstration purpose and their correspon
 * `output/`
   * `pointcloud/**_**.csv`  
     Pre-labelled 50x50m point clouds consisting of ground and road points, courtesy of [CycloMedia](https://www.cyclomedia.com/). See notes below for details.
-  * `pilot_area.geojson`
-    Predefined pilot area for demonstration purposes 
 
-These files are sufficient to run the [notebooks](../notebooks). Some additional required data files can be downloaded with provided scripts.
+These files are sufficient to run the [notebooks](../notebooks).
 
 
 ## Some notes on the Datasets
