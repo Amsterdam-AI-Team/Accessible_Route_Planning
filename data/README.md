@@ -1,6 +1,6 @@
 # Data
 
-We supply a couple of point clouds for demonstration purpose and their corresponding ahn and bgt information. The point clouds are used to determine curb heights. Because we only need ground and road points from our point clouds to do this, the other points have been filtered out.
+We supply a couple of point clouds for demonstration purpose and their corresponding AHN and BGT information. The point clouds are used to determine curb heights. Because we only need ground and road points from our point clouds to do this, the other points have been filtered out.
 
 * `input/`
   * `pointcloud/filtered_**_**.laz`  
