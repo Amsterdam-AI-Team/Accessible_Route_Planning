@@ -8,7 +8,7 @@ We supply a couple of point clouds for demonstration purpose and their correspon
   * `ahn/ahn_**_**.laz`  
   The corresponding AHN point clouds, which can also be generated using the [preprocessing tools](../notebooks/1.%20AHN%20preprocessing.ipynb).
   * `bgt/**_**.csv`  
-  BGT information regarding streets for the point clouds.
+  BGT information regarding streets for the point clouds, which is generated in [notebook 5](./../notebooks/5.%20ground_and_road_fusion.ipynb).
   * `sidewalk_segments.gpkg`  
   Information on widths of sidewalk_segments, which can also be generated using [this repository](https://github.com/Amsterdam-AI-Team/Urban_PointCloud_Sidewalk_Width).
 * `output/`
