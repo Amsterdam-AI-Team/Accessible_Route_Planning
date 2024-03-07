@@ -49,7 +49,7 @@ git clone https://github.com/Amsterdam-AI-Team/Accessible_Route_Planning.git
 pip install -r requirements_network_generation.txt
 ```
 
-2b) Install the [Urban Point Cloud Processing](www.nu.nl) package from source:
+2b) Install the [Urban Point Cloud Processing](https://github.com/Amsterdam-AI-Team/Urban_PointCloud_Processing) package from source:
     
 ```bash
 python -m pip install git+https://github.com/Amsterdam-AI-Team/Urban_PointCloud_Processing.git#egg=upcp
