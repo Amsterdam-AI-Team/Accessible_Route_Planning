@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../notebooks')
+
 import shapely.geometry as sg
 import shapely.ops as so
 from centerline.geometry import Centerline
