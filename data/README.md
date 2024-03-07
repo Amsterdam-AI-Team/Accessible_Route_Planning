@@ -24,8 +24,8 @@ This repository was designed to be used with specific data sources:
 
 * LAS point clouds of urban scenes supplied by [CycloMedia](https://www.cyclomedia.com/).
 * AHN3 or AHN4 point clouds downloaded from [ArcGIS](https://www.arcgis.com/apps/Embed/index.html?appid=a3dfa5a818174aa787392e461c80f781) or [GeoTiles](https://geotiles.nl).
-* BGT data down from [PDOK](https://www.pdok.nl/) or the [Amsterdam API](https://map.data.amsterdam.nl/maps/bgtobjecten?).
-* BAG data down from [3D BAG](https://data.3dbag.nl/)
+* BGT data downloaded from [PDOK](https://www.pdok.nl/) or the [Amsterdam API](https://map.data.amsterdam.nl/maps/bgtobjecten?).
+* BAG data downloaded from [3D BAG](https://data.3dbag.nl/)
 
 The latter three sources are specific to The Netherlands.
 
