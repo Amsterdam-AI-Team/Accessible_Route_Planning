@@ -3,7 +3,7 @@
 This repository contains a pipeline for **accessible route planning**. More specifically, it contains code to generate a accessible network and code to subsequently plan routes on this network given a set of user preferences. The following preferences that can be set by a user are included:
 * **Minimum sidewalk width**
 * **Maximum curb height**
-* **Preference for walking or cycling**
+* **Preference for using sidewalks or biycle lanes**
 
 Demonstration data has been included to run the pipeline. 
 
@@ -12,6 +12,16 @@ The methods can serve as inspiration, or can be applied as-is under some specifi
 1. Usage in The Netherlands;
 2. Point clouds in LAS format and tiled following [specific rules](datasets); and
 3. Corresponding AHN data.
+
+| ![Demo area](./media/examples/demo_area.png) | ![Final demo network](./media/examples/final_demo_network.png) |
+|:---:|:---:|
+
+<b>Example:</b> (left) The demo area used to generate network for. (right) The final demo network. <br/>
+
+| ![Demo route with walk preference](./media/examples/accessible_route_demo_walk.png) | ![Demo route with walk preference](./media/examples/accessible_route_demo_bike.png) |
+|:---:|:---:|
+
+<b>Example:</b> (left) Demo route with a preference for using sidewalks. (right) Demo route with a preference for using bicycle lanes. Both routes have a minimum sidewalk width of 0.8m maximum curb height of 0.04m <br/>
 
 ## Goal
 This repository is designed to address the challenges faced by less mobile individuals, particularly wheelchair users, in urban environments. The primary objective of this project is to enable citizens with reduced mobility to participate independently and equitably in city life. 
