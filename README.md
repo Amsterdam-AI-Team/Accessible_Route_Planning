@@ -2,7 +2,7 @@
 
 This repository contains a pipeline for **accessible route planning**. More specifically, it contains code to generate a accessible network and code to subsequently plan routes on this network given a set of user preferences. The following preferences that can be set by a user are included:
 * **Minimum sidewalk width**
-* **Maximum curb height**
+* **Maximum curb height when crossing the street**
 * **Preference for using sidewalks or biycle lanes**
 
 Demonstration data has been included to run the pipeline. 
@@ -16,7 +16,7 @@ The methods can serve as inspiration, or can be applied as-is under some specifi
 | ![Demo area](./media/examples/demo_area.png) | ![Final demo network](./media/examples/final_demo_network.png) |
 |:---:|:---:|
 
-<b>Example:</b> (left) The demo area used to generate network for. (right) The final demo network. <br/>
+<b>Example:</b> (left) The demo area used to generate network for. (right) The final demo network. Blue: sidewalks, green: bicycle lanes, purple: crossings, pins: public transport stops. <br/>
 
 | ![Demo route with walk preference](./media/examples/accessible_route_demo_walk.png) | ![Demo route with walk preference](./media/examples/accessible_route_demo_bike.png) |
 |:---:|:---:|
