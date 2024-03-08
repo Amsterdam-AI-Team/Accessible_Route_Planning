@@ -44,19 +44,19 @@ network_map_final = f'{out_folder}network_map_final.html'
 output_basic_network_including_crossings = f'{out_folder}basic_pedestrian_network_widths_including_crossings.gpkg'
 
 # Crossing features from project sidewalk
-output_project_sidewalk_crossing_features = f'{out_folder}crossing_features/project_sidewalk/crossing_features_project_sidewalk.csv'
+output_project_sidewalk_crossing_features = f'{out_folder}crossing_features/project_sidewalk/crossing_features_project_sidewalk.gpkg'
 
 # Crossings from project sidewalk
 output_project_sidewalk_crossings = f'{out_folder}project_sidewalk_crossings.gpkg'
 
 # Crossing features from OSM
-output_osm_crossing_features = f'{out_folder}crossing_features/OpenStreetMap/crossing_features_osm.csv'
+output_osm_crossing_features = f'{out_folder}crossing_features/OpenStreetMap/crossing_features_osm.gpkg'
 
 # Crossings from OSM
 output_osm_crossings = f'{out_folder}osm_crossings.gpkg'
 
 # Crossing features from traffic signs
-output_traffic_sign_crossing_features = f'{out_folder}crossing_features/traffic_sign/crossing_features_traffic_sign.csv'
+output_traffic_sign_crossing_features = f'{out_folder}crossing_features/traffic_sign/crossing_features_traffic_sign.gpkg'
 
 # Crossings from traffic signs
 output_traffic_sign_crossings = f'{out_folder}traffic_sign_crossings.gpkg'
@@ -66,6 +66,9 @@ output_curb_heigts = f'{out_folder}curb_heights/curbs_and_heights.csv'
 
 # Crossings from curb height
 output_curb_crossings_base = f'{out_folder}curb_crossings'
+
+# Csv source file for traffic signs 
+signs_file = f'{in_folder}output/2022juni_verkeersborden_obv_beeldherkenning.csv'
 
 # XML source file for public transport (bus, tram and ferry) stops
 ndov_public_transport_stops = f'{out_folder}ExportCHB20240122013051.xml'

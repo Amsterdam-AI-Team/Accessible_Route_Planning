@@ -1,0 +1,15 @@
+Folium
+geopandas
+jupyter
+matplotlib
+numpy
+pandas
+centerline==0.6.0
+contextily==1.5.0
+momepy==0.5.3
+networkx==3.1
+osmnx==1.2.2
+seaborn==0.13.2
+Shapely==1.8.5
+tqdm==4.66.1
+xmltodict==0.13.0

@@ -1,0 +1,10 @@
+numpy
+jupyter
+pandas
+geopandas
+shapely
+matplotlib
+contextily
+networkx
+folium
+momepy

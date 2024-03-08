@@ -1,44 +1,41 @@
 import folium
 
-def generate_map_params(satelite=False):
+
+def generate_map_params(satellite=False):
     """
-    Get parameters for folium map
-    Parameters
-    ----------
-    satelite : bool
-        True if folium map should have satelite background.
-        False if folium map should have openstreetmap background.
-    Returns
-    -------
+    Get parameters for folium map.
+
+    Parameters:
+    - satellite (bool): True if folium map should have satellite background.
+                        False if folium map should have openstreetmap background.
+
+    Returns:
     tile: folium map background.
     """
-    if satelite == True:
-        network_color = 'white'
+    if satellite:
         tile = folium.TileLayer(
-                    tiles = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-                    attr = 'Esri',
-                    name = 'Esri Satellite',
-                    overlay = False,
-                    control = True)
+            tiles='https://server.arcgisonline.com/ArcGIS/rest/services/'
+            'World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            attr='Esri',
+            name='Esri Satellite',
+            overlay=False,
+            control=True)
     else:
         tile = 'openstreetmap'
-        network_color = 'black'
     return tile
+
 
 def gen_tooltip(fields, aliases):
     """
-    Generate tooltip for folium map
-    Parameters
-    ----------
-    fields : list
-        column names from dataframe to include in tooltip
-    aliases: list
-        alias names for fields that show up in tooltip
-    Returns
-    -------
+    Generate tooltip for folium map.
+
+    Parameters:
+    - fields (list): Column names from the dataframe to include in the tooltip.
+    - aliases (list): Alias names for fields that show up in the tooltip.
+
+    Returns:
     tooltip
     """
-
     tooltip = folium.GeoJsonTooltip(
         fields=fields,
         aliases=aliases,
@@ -55,8 +52,14 @@ def gen_tooltip(fields, aliases):
     )
     return tooltip
 
-def gen_template():
 
+def gen_template():
+    """
+    Generate legend for folium map.
+
+    Returns:
+    template
+    """
     template = """
     {% macro html(this, kwargs) %}
 
@@ -70,7 +73,7 @@ def gen_template():
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
+
     <script>
     $( function() {
         $( "#maplegend" ).draggable({
@@ -88,11 +91,11 @@ def gen_template():
     </head>
     <body>
 
-    
-    <div id='maplegend' class='maplegend' 
+
+    <div id='maplegend' class='maplegend'
         style='position: absolute; z-index:9999; border:2px solid grey; background-color:rgba(255, 255, 255, 0.8);
         border-radius:6px; padding: 10px; font-size:14px; right: 20px; bottom: 20px;'>
-        
+
     <div class='legend-title'>Legend</div>
     <div class='legend-scale'>
     <ul class='legend-labels'>
@@ -104,7 +107,7 @@ def gen_template():
     </ul>
     </div>
     </div>
-    
+
     </body>
     </html>
 
@@ -153,7 +156,12 @@ def gen_template():
 
 
 def gen_template_curbs():
+    """
+    Generate legend for folium map.
 
+    Returns:
+    template
+    """
     template = """
     {% macro html(this, kwargs) %}
 
@@ -167,7 +175,7 @@ def gen_template_curbs():
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
+
     <script>
     $( function() {
         $( "#maplegend" ).draggable({
@@ -185,11 +193,11 @@ def gen_template_curbs():
     </head>
     <body>
 
-    
-    <div id='maplegend' class='maplegend' 
+
+    <div id='maplegend' class='maplegend'
         style='position: absolute; z-index:9999; border:2px solid grey; background-color:rgba(255, 255, 255, 0.8);
         border-radius:6px; padding: 10px; font-size:14px; right: 20px; bottom: 20px;'>
-        
+
     <div class='legend-title'>Legend</div>
     <div class='legend-scale'>
     <ul class='legend-labels'>
@@ -198,7 +206,7 @@ def gen_template_curbs():
     </ul>
     </div>
     </div>
-    
+
     </body>
     </html>
 

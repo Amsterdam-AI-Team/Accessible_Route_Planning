@@ -1,21 +1,29 @@
-import sys
-import os
 import requests
+import sys
+sys.path.append('../notebooks')
 
-import numpy as np
 import pandas as pd
 import geopandas as gpd
 
-data_crs = 'epsg:28992'
+import settings as st
 
 BGT_use_columns = ['geometry', 'identificatie_lokaalid', 'naam']
 BGT_namedict = {'BGT': 'bgt_functie', 'BGTPLUS': 'plus_type'}
 WFS_URL = 'https://map.data.amsterdam.nl/maps/bgtobjecten?'
 
+
 def get_bgt_data_for_bbox(bbox, layers):
-    """Scrape BGT data in a given bounding box."""
-    gdf = gpd.GeoDataFrame(columns=BGT_use_columns,
-                           geometry='geometry', crs=data_crs)
+    """
+    Scrape BGT data within a given bounding box for specified layers.
+
+    Parameters:
+    - bbox (tuple): Tuple representing the bounding box ((minx, miny), (maxx, maxy)).
+    - layers (list): List of BGT layers to scrape.
+
+    Returns:
+    GeoDataFrame containing BGT data for the specified layers within the bounding box.
+    """
+    gdf = gpd.GeoDataFrame(columns=BGT_use_columns, geometry='geometry', crs=st.CRS_map)
     gdf.index.name = 'ogc_fid'
 
     content = []
@@ -26,12 +34,11 @@ def get_bgt_data_for_bbox(bbox, layers):
 
         # Parse the downloaded json response.
         if json_content is not None and len(json_content['features']) > 0:
-            gdf = gpd.GeoDataFrame.from_features(
-                                json_content, crs=data_crs).set_index('ogc_fid')
+            gdf = gpd.GeoDataFrame.from_features(json_content, crs=st.CRS).set_index('ogc_fid')
             gdf = gdf[gdf['bgt_status'] == 'bestaand']
             try:
                 gdf['naam'] = gdf[layer_type]
-            except:
+            except Exception:
                 gdf['naam'] = layer
             content.append(gdf[BGT_use_columns])
 
@@ -42,21 +49,20 @@ def get_bgt_data_for_bbox(bbox, layers):
 
 def scrape_amsterdam_bgt(layer_name, bbox=None):
     """
-    Scrape BGT layer information from the WFS.
-    Parameters
-    ----------
-    layer_name : str
-        Information about the different layers can be found at:
+    Scrape BGT layer information from the Amsterdam WFS.
+
+    Parameters:
+    - layer_name (str): BGT layer name. Information about the different layers can be found at:
         https://www.amsterdam.nl/stelselpedia/bgt-index/producten-bgt/prodspec-bgt-dgn-imgeo/
-    Returns
-    -------
-    The WFS response in JSON format or a dict.
+    - bbox (tuple): Optional bounding box ((minx, miny), (maxx, maxy)).
+
+    Returns:
+    The WFS response in JSON format or a dictionary.
     """
     params = 'REQUEST=GetFeature&' \
              'SERVICE=wfs&' \
              'VERSION=2.0.0&' \
-             'TYPENAME=' \
-             + layer_name + '&'
+             'TYPENAME=' + layer_name + '&'
 
     if bbox is not None:
         bbox_string = str(bbox[0][0]) + ',' + str(bbox[0][1]) + ',' \
@@ -70,5 +76,3 @@ def scrape_amsterdam_bgt(layer_name, bbox=None):
         return response.json()
     except ValueError:
         return None
-
-    
