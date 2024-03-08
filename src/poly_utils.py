@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../notebooks')
+
 import shapely.geometry as sg
 import shapely.ops as so
 from centerline.geometry import Centerline
@@ -7,6 +10,7 @@ import geopandas as gpd
 from geopandas import GeoDataFrame
 from shapely.geometry import Polygon
 from scipy.spatial import cKDTree
+import settings as st
 
 #from upcp.utils import las_utils
 
