@@ -1,4 +1,4 @@
-# Accessible route planning
+# Accessible Route Planning
 
 This repository contains a pipeline for **accessible route planning**. More specifically, it contains code to generate a accessible network and code to subsequently plan routes on this network given a set of user preferences. The following preferences that can be set by a user are included:
 * **Minimum sidewalk width**
