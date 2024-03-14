@@ -71,7 +71,7 @@ output_curb_crossings_base = f'{out_folder}curb_crossings'
 signs_file = f'{in_folder}2022juni_verkeersborden_obv_beeldherkenning.csv'
 
 # XML source file for public transport (bus, tram and ferry) stops
-ndov_public_transport_stops = f'{in_folder}ExportCHB20240122013051.xml'
+ndov_public_transport_stops = f'{in_folder}ExportCHB20240314013152.xml'
 
 # Features for public transport stops
 output_public_transport_features = f'{out_folder}public_transport_features.gpkg'
