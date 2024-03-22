@@ -32,8 +32,8 @@ bgt_road_layers = ['BGT_WGL_rijbaan_lokale_weg', 'BGT_WGL_rijbaan_regionale_weg'
                     'BGT_WGL_ov-baan', 'BGT_WGL_fietspad'] # Roads
 
 # Select location for BGT data
-bbox = None  # Get all data, entire Amsterdam
-#bbox = ((122000, 485550), (122300, 485250))
+bbox = ((114567.240, 484813.834), (114837.559, 485139.165)) # Demo area
+# bbox = None  # Get all data, entire Amsterdam
 
 # Resolution (in m) for min and avg width computation
 width_resolution = 1
