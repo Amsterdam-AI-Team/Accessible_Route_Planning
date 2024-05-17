@@ -25,11 +25,11 @@ max_ls_length = 2
 
 # Select which layers of BGT data to include
 # (https://www.amsterdam.nl/stelselpedia/bgt-index/producten-bgt/prodspec-bgt-dgn-imgeo)
-bgt_layers = ['BGT_WGL_voetpad', 'BGT_WGL_voetgangersgebied', 'BGT_WGL_inrit', 'BGT_WGL_woonerf']  # Pedestrian, note: 'BGT_WGL_voetpad_op_trap' not included
-bgt_layers_bike = ['BGT_WGL_fietspad']  # Bikes
-bgt_road_layers = ['BGT_WGL_rijbaan_lokale_weg', 'BGT_WGL_rijbaan_regionale_weg',
-                    'BGT_WGL_rijbaan_autoweg', 'BGT_WGL_rijbaan_autosnelweg',
-                    'BGT_WGL_ov-baan', 'BGT_WGL_fietspad'] # Roads
+bgt_layers = ['voetpad', 'voetgangersgebied', 'inrit', 'woonerf'] # Pedestrian, note: 'voetpad op trap' not included
+bgt_layers_bike = ['fietspad']  # Bikes
+bgt_road_layers = ['rijbaan lokale weg', 'rijbaan regionale weg',
+                    'rijbaan autoweg', 'rijbaan autosnelweg',
+                    'OV-baan', 'fietspad'] # Roads
 
 # Select location for BGT data
 bbox = ((114567.240, 484813.834), (114837.559, 485139.165)) # Demo area
