@@ -4,75 +4,70 @@ sys.path.append('../notebooks')
 
 import pandas as pd
 import geopandas as gpd
+from shapely.geometry import Polygon
 
 import settings as st
 
-BGT_use_columns = ['geometry', 'identificatie_lokaalid', 'naam']
-BGT_namedict = {'BGT': 'bgt_functie', 'BGTPLUS': 'plus_type'}
-WFS_URL = 'https://map.data.amsterdam.nl/maps/bgtobjecten?'
+# Base URL for the Web Feature Service
+WFS_URL = 'https://api.data.amsterdam.nl/v1/wfs/bgt/?'
 
-
-def get_bgt_data_for_bbox(bbox, layers):
-    """
-    Scrape BGT data within a given bounding box for specified layers.
-
-    Parameters:
-    - bbox (tuple): Tuple representing the bounding box ((minx, miny), (maxx, maxy)).
-    - layers (list): List of BGT layers to scrape.
-
-    Returns:
-    GeoDataFrame containing BGT data for the specified layers within the bounding box.
-    """
-    gdf = gpd.GeoDataFrame(columns=BGT_use_columns, geometry='geometry', crs=st.CRS_map)
-    gdf.index.name = 'ogc_fid'
-
-    content = []
-    for layer in layers:
-        # Scrape data from the Amsterdam WFS, this will return a json response.
-        json_content = scrape_amsterdam_bgt(layer, bbox=bbox)
-        layer_type = BGT_namedict[layer.split('_')[0]]
-
-        # Parse the downloaded json response.
-        if json_content is not None and len(json_content['features']) > 0:
-            gdf = gpd.GeoDataFrame.from_features(json_content, crs=st.CRS).set_index('ogc_fid')
-            gdf = gdf[gdf['bgt_status'] == 'bestaand']
-            try:
-                gdf['naam'] = gdf[layer_type]
-            except Exception:
-                gdf['naam'] = layer
-            content.append(gdf[BGT_use_columns])
-
-    if len(content) > 0:
-        gdf = pd.concat(content)
-    return gdf
-
-
-def scrape_amsterdam_bgt(layer_name, bbox=None):
+def scrape_amsterdam_bgt(bbox=None):
     """
     Scrape BGT layer information from the Amsterdam WFS.
-
     Parameters:
-    - layer_name (str): BGT layer name. Information about the different layers can be found at:
-        https://www.amsterdam.nl/stelselpedia/bgt-index/producten-bgt/prodspec-bgt-dgn-imgeo/
     - bbox (tuple): Optional bounding box ((minx, miny), (maxx, maxy)).
-
     Returns:
-    The WFS response in JSON format or a dictionary.
+    JSON response or None if the request fails.
     """
-    params = 'REQUEST=GetFeature&' \
-             'SERVICE=wfs&' \
-             'VERSION=2.0.0&' \
-             'TYPENAME=' + layer_name + '&'
-
-    if bbox is not None:
-        bbox_string = str(bbox[0][0]) + ',' + str(bbox[0][1]) + ',' \
-                      + str(bbox[1][0]) + ',' + str(bbox[1][1])
-        params = params + 'BBOX=' + bbox_string + '&'
-
-    params = params + 'OUTPUTFORMAT=geojson'
-
-    response = requests.get(WFS_URL + params)
+    # Build the request parameters
+    params = {
+        'SERVICE': 'WFS',
+        'VERSION': '2.0.0',
+        'REQUEST': 'GetFeature',
+        'TYPENAMES': 'wegdelen-geometrie',
+        'OUTPUTFORMAT': 'geojson'
+    }
+    
+    if bbox:
+        bbox_string = ','.join(map(str, [bbox[0][0], bbox[0][1], bbox[1][0], bbox[1][1]]))
+        params['BBOX'] = bbox_string
+    
+    # Send the GET request
+    response = requests.get(WFS_URL, params=params)
     try:
         return response.json()
     except ValueError:
         return None
+
+def get_bgt_data_for_bbox(bbox, layers):
+    """
+    Scrape BGT data within a specified bounding box for given layers.
+    Parameters:
+    - bbox (tuple): Bounding box coordinates ((minx, miny), (maxx, maxy)).
+    - layers (list): List of BGT layers to scrape.
+    Returns:
+    GeoDataFrame with the BGT data for the specified layers.
+    """
+    # Retrieve data from WFS
+    json_content = scrape_amsterdam_bgt(bbox=bbox)
+
+    # Filter items and extract required data
+    features = [
+        (item['properties']['bgt_functie'], Polygon(item['geometry']['coordinates'][0]))
+        for item in json_content.get('features', [])
+        if item['properties']['bgt_functie'] in layers
+    ]
+
+    # Unpack features if non-empty
+    if features:
+        bgt_functies, geometries = zip(*features)
+    else:
+        bgt_functies, geometries = [], []
+
+    # Create a GeoDataFrame
+    gdf = gpd.GeoDataFrame({
+        'naam': bgt_functies,
+        'geometry': geometries
+    }, geometry='geometry', crs=st.CRS)
+
+    return gdf
